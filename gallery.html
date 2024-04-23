@@ -4,27 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery Page</title>
+    <link href="css/styleg.css" rel="stylesheet">
 </head>
 <body>
-    <link href="css/styleg.css" rel="stylesheet">
-
-<div class="nav-bar">
-    <h1>Gallery</h1>
-    <div>
-        <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
+    <div class="nav-bar">
+        <h1>Gallery</h1>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </div>
-</div>
-
-<div class="container">
-    <div class="gallery">
-        <img src="css/img/kmn.png">
-        <img src="css/img/kmn.png">
-        <img src="css/img/kmn.png">
-        <img src="css/img/kmn.png">
+    <div class="container">
+        <div class="gallery">
+            <div class="image-container" onmouseover="changeBackgroundColor('Image 1')" onmouseout="resetBackgroundColor()">
+                <img src="css/img/kmn.png" onclick="openLightbox(this)" title="Image 1">
+                <div class="image-text">Kimi No Nawa </div>
+            </div>
+            <div class="image-container" onmouseover="changeBackgroundColor('Image 2')" onmouseout="resetBackgroundColor()">
+                <img src="css/img/gs1.jpg" onclick="openLightbox(this)" title="Image 2">
+                <div class="image-text">Genshin Impact </div>
+            </div>
+            <div class="image-container" onmouseover="changeBackgroundColor('Image 3')" onmouseout="resetBackgroundColor()">
+                <img src="css/img/gs2.jpg" onclick="openLightbox(this)" title="Image 3">
+                <div class="image-text">Genshin Impact </div>
+            </div>
+            <div class="image-container" onmouseover="changeBackgroundColor('Image 4')" onmouseout="resetBackgroundColor()">
+                <img src="css/img/hnk.jpg" onclick="openLightbox(this)" title="Image 4">
+                <div class="image-text">Tenki No Ko </div>
+            </div>
+            <div class="video-container" onmouseover="changeBackgroundColor('Video 1')" onmouseout="resetBackgroundColor()">
+                <video controls>
+                    <source src="css/mp4/udin.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="image-text">UDIN</div>
+            </div>
+        </div>
     </div>
-</div>
+    
+    <div class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img">
+    </div>
 
+    <script>
+        function openLightbox(media) {
+            var lightbox = document.querySelector('.lightbox');
+            var lightboxContent = lightbox.querySelector('img, video');
+            if (media.tagName === 'VIDEO') {
+                lightboxContent.src = media.querySelector('source').src;
+            } else {
+                lightboxContent.src = media.src;
+            }
+            lightbox.style.display = 'block';
+        }
+
+        function closeLightbox() {
+            var lightbox = document.querySelector('.lightbox');
+            lightbox.style.display = 'none';
+        }
+
+        function changeBackgroundColor(title) {
+            var body = document.querySelector('body');
+            var backgroundColors = {
+                'Image 1': '#ff9999',
+                'Image 2': '#99ff99',
+                'Image 3': '#9999ff',
+                'Image 4': '#ffff99',
+                'Video 1': '#ffcc00',
+                'Video 2': '#ff6600', 
+            };
+            body.style.backgroundColor = backgroundColors[title];
+        }
+
+        function resetBackgroundColor() {
+            var body = document.querySelector('body');
+            body.style.backgroundColor = '#171616';
+        }
+    </script>
 </body>
 </html>
