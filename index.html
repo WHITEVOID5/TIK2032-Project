@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>HOME</title>
     <link href="css/style.css" rel="stylesheet">
+    <script src="script.js"></script>
   </head>
   <body>
     <div class="top-wrapper">
@@ -14,6 +15,7 @@
       <audio id="song" loop>
         <source src="css/mp3/sumeru.mp3" type="audio/mp3">  
       </audio>
+
       <div class="container">
         <h1>HOMEPAGE</h1>
         <h1>BELAJAR CODING</h1>
@@ -30,20 +32,5 @@
     <div class="lesson-wrapper"></div>
     <div class="message-wrapper"></div>
     <img id="playPauseLogo" src="css/img/play.png" alt="Play/Pause Logo">
-
-    <script>
-      var audio = document.getElementById("song");
-      var playPauseLogo = document.getElementById("playPauseLogo");
-    
-      playPauseLogo.addEventListener("click", function() {
-        if (audio.paused) {
-          audio.play();
-          playPauseLogo.src = "css/img/pause.png";
-        } else {
-          audio.pause();
-          playPauseLogo.src = "css/img/play.png";
-        }
-      });
-    </script>
   </body>
 </html>
